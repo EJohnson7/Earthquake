@@ -80,8 +80,11 @@ function createMap(earthquakes) {
     "Satelite Map": satelitemap,
     "Dark Map": darkmap
   };
+
   // Make plates layer
   var plates = new L.LayerGroup();
+
+
   // Create overlay object to hold our overlay layer
   var overlayMaps = {
     Earthquakes: earthquakes,
@@ -95,7 +98,9 @@ function createMap(earthquakes) {
     layers: [satelitemap, earthquakes, plates],
     maxBounds: L.latLngBounds([90, -180], [-90, 180])
   });
-// Add lines data
+
+
+// Add plate lines data
   d3.json(link2, function(plateData){
       L.geoJson(plateData, {
           color: "gold",
@@ -103,6 +108,8 @@ function createMap(earthquakes) {
       })
     .addTo(plates);
   });
+
+
   // Create a layer control
   // Pass in our baseMaps and overlayMaps
   // Add the layer control to the map
